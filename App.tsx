@@ -11,6 +11,7 @@ import {Ionicons} from "@expo/vector-icons";
 import {RegattaItem, RegattaList} from "./src/modules/regatta";
 import {StatusBar} from 'expo-status-bar';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import Login from "./src/modules/login";
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -44,10 +45,11 @@ const MainTabs = () => {
 export default function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator initialRouteName={Routes.login}>
                 <Stack.Screen name={Routes.mainStack} component={MainTabs} options={{headerShown: false}} />
                 <Stack.Screen name={Routes.regattaItem} component={RegattaItem} options={{headerRight: SettingsButton}} />
                 <Stack.Screen name={Routes.settings} component={Settings} options={{headerRight: SettingsButton}} />
+                <Stack.Screen name={Routes.login} component={Login} options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>
     );
