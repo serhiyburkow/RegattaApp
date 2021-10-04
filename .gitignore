@@ -14,5 +14,5 @@ web-build/
 
 .idea/
 CurrentVersion.iml
-.expo-shared
+.expo-shared/
 yarn.lock

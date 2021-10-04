@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Class project",
+    "githubUrl": "https://github.com/serhiyburkow/RegattaApp"
   }
 }
