@@ -1,21 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import {tabItem, tabs} from "./src/navigation/navigation";
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from "@react-navigation/native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to Regatta App!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const getIconName = (title: string, focused: boolean) => {
+    return tabs.find(el => el.title === title)?.icon[+focused];
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const tabsElements = (tabs: tabItem[]) => {
+    return tabs.map(tab => <Tab.Screen options={tab.options} name={tab.title} key={tab.title}
+                                       component={tab.component}/>)
+}
+
+function HomeTabs() {
+    return (
+        <Tab.Navigator
+            screenOptions={({route}) => ({
+                tabBarIcon: ({focused, color, size}) => <Ionicons name={getIconName(route.name, focused)} size={size}
+                                                                  color={color}/>,
+                tabBarActiveTintColor: 'tomato',
+                tabBarInactiveTintColor: 'gray',
+            })}
+        >
+            {tabsElements(tabs)}
+        </Tab.Navigator>
+    )
+}
+
+export default function App() {
+
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen options={{headerShown: false}} name="Home" component={HomeTabs}/>
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
