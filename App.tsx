@@ -1,33 +1,54 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import HomeScreen from "./src/screens/home/home.view";
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from "@react-navigation/native";
+import {RootStackParamList} from "./src/navigation/RootStackParamList";
+import {Routes} from "./src/constants";
+import SettingsButton from "./src/components/header/settingsButton";
+import Settings from "./src/modules/settings";
+import Dashboard from "./src/modules/dashboard";
+import {Ionicons} from "@expo/vector-icons";
+import {RegattaItem, RegattaList} from "./src/modules/regatta";
+import {StatusBar} from 'expo-status-bar';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
+const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
-export default function App() {
-  return (
-      <NavigationContainer>
-        <Tab.Navigator
-            screenOptions={({route}) => ({
-              tabBarIcon: ({focused, color, size}) => {
-                let iconName;
-
-                if (route.name === 'Home') {
-                  iconName = focused
-                      ? 'ios-information-circle'
-                      : 'ios-information-circle-outline';
-                }
-
-                return <Ionicons name={iconName} size={size} color={color}/>;
-              },
-              tabBarActiveTintColor: 'tomato',
-              tabBarInactiveTintColor: 'gray',
+const MainTabs = () => {
+    return (
+        <SafeAreaProvider>
+            <Tab.Navigator screenOptions={() => ({
+                tabBarActiveTintColor: 'tomato',
+                tabBarInactiveTintColor: 'gray',
             })}
-        >
-          <Tab.Screen name="Home" component={HomeScreen}/>
-        </Tab.Navigator>
-      </NavigationContainer>
-  );
+            >
+                <Tab.Screen name={Routes.dashboard} component={Dashboard} options={{
+                    headerRight: SettingsButton,
+                    tabBarIcon: ({focused, color, size}) => (
+                        <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle'} size={size}
+                                  color={color}/>),
+                }}/>
+                <Tab.Screen name={Routes.regattaList} component={RegattaList} options={{
+                    headerRight: SettingsButton,
+                    tabBarIcon: ({focused, color, size}) => (
+                        <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle'} size={size}
+                                  color={color}/>),
+                }}/>
+            </Tab.Navigator>
+            <StatusBar/>
+        </SafeAreaProvider>
+    )
+}
+
+export default function App() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name={Routes.mainStack} component={MainTabs} options={{headerShown: false}} />
+                <Stack.Screen name={Routes.regattaItem} component={RegattaItem} options={{headerRight: SettingsButton}} />
+                <Stack.Screen name={Routes.settings} component={Settings} options={{headerRight: SettingsButton}} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
 }
