@@ -4,6 +4,7 @@ import {layout} from "../../styles/layout";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/RootStackParamList";
 import {Routes} from "../../constants";
+import TextInput from "../../components/TextInput";
 
 type Props = NativeStackScreenProps<RootStackParamList, Routes.dashboard>
 
