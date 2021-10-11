@@ -1,5 +1,3 @@
-import { ShadowProps } from 'react-native-shadow-2';
-
 enum Colors {
     primary = '#1b335f',
     secondary = '#7292a5',
@@ -43,12 +41,4 @@ enum TextSize {
     h2 = 20,
 }
 
-const Shadows = {
-    socialButtons: {
-        offset: [2, 2],
-        distance: 5,
-        startColor: '#00000020',
-    } as ShadowProps,
-};
-
-export { Colors, TextSize, Indents, Shadows };
+export { Colors, TextSize, Indents };

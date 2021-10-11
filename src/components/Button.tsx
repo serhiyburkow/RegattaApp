@@ -12,7 +12,7 @@ import {
     ViewStyle,
 } from 'react-native';
 
-import { Colors, Indents, TextSize } from '@constants/styles';
+import { Colors, Indents, TextSize } from '../constants/styles';
 
 const width = Dimensions.get('window').width;
 
