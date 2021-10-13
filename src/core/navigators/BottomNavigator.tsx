@@ -3,13 +3,11 @@ import {
     createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import {Routes} from "./routes";
-import Dashboard from "../../modules/dashboard";
-import SettingsButton from "../../components/header/settingsButton";
+import {Routes} from "@core/navigators/routes";
+import Dashboard from "@modules/dashboard";
 import {Ionicons} from "@expo/vector-icons";
-import {RegattaList} from "../../modules/regatta";
-import About from "../../modules/about";
+import {RegattaList} from "@modules/regatta";
+import SettingsButton from "@components/header/settingsButton";
 
 export const BottomNavigator = () => {
 
@@ -29,12 +27,6 @@ export const BottomNavigator = () => {
                               color={color}/>),
             }}/>
             <Tab.Screen name={Routes.regattaList} component={RegattaList} options={{
-                headerRight: SettingsButton,
-                tabBarIcon: ({focused, color, size}) => (
-                    <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle'} size={size}
-                              color={color}/>),
-            }}/>
-            <Tab.Screen name={Routes.about} component={About} options={{
                 headerRight: SettingsButton,
                 tabBarIcon: ({focused, color, size}) => (
                     <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle'} size={size}

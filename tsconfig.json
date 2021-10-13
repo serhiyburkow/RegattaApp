@@ -5,9 +5,12 @@
     "baseUrl": "./src", // all paths are relative to the baseUrl
     "paths": {
       "@app/*": ["*"],
-      "@components/*": ["components/*"],
+      "@components/*": ["core/components/*"],
       "@constants/*": ["constants/*"],
-      "@assets/*": ["assets/*"]
+      "@config/*": ["config/*"],
+      "@assets/*": ["../assets/*"],
+      "@modules/*": ["modules/*"],
+      "@core/*": ["core/*"]
     }
   },
   "exclude": [

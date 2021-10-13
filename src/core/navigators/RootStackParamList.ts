@@ -1,4 +1,4 @@
-import {Routes} from "./routes";
+import {Routes} from "@core/navigators/routes";
 
 export type RootStackParamList = {
     [Routes.mainStack]: undefined;

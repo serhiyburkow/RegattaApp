@@ -1,27 +1,31 @@
-export type Colors = ColorsLight & ColorsDark & string;
+export type Colors = keyof typeof ColorsLight & keyof typeof ColorsDark & string;
 
-export enum ColorsLight {
-    primary = '#1b335f',
-    secondary = '#7292a5',
-    ternary = '#a7aeb9',
-    additional = '#faed8b',
-    contrast = '#cf5816',
-    light = '#fff',
-    semiLight = '#f2f2f2',
-    semiDark = '#999999',
-    darker = '#444',
-    dark = '#000'
+type ColorsType = {
+    [key: string]: string
 }
 
-export enum ColorsDark {
-    primary = '#1b335f',
-    secondary = '#7292a5',
-    ternary = '#a7aeb9',
-    additional = '#faed8b',
-    contrast = '#cf5816',
-    light = '#fff',
-    semiLight = '#fafafa',
-    semiDark = '#999999',
-    darker = '#444',
-    dark = '#000'
+export const ColorsLight: ColorsType = {
+    primary: '#1b335f',
+    secondary: '#7292a5',
+    ternary: '#a7aeb9',
+    additional: '#faed8b',
+    contrast: '#cf5816',
+    monochrome0: '#000',
+    monochrome30: '#444',
+    monochrome50: '#999',
+    monochrome70:  '#f2f2f2',
+    monochrome100: '#fff'
+}
+
+export const ColorsDark: ColorsType = {
+    primary: '#1b335f',
+    secondary: '#7292a5',
+    ternary: '#a7aeb9',
+    additional: '#faed8b',
+    contrast: '#cf5816',
+    monochrome100: '#fff',
+    monochrome70: '#f2f2f2',
+    monochrome50: '#999',
+    monochrome30:  '#444',
+    monochrome0: '#000'
 }

@@ -1,10 +1,9 @@
 import React from "react";
 import {useNavigation} from "@react-navigation/native";
-import {StyleSheet} from "react-native";
 import {StackNavigationProp} from "@react-navigation/stack";
-import {RootStackParamList} from "../../../core/navigators/RootStackParamList";
-import {Routes} from "../../../core/navigators/routes";
-import Button from "../../Button";
+import {RootStackParamList} from "@core/navigators/RootStackParamList";
+import {Routes} from "@core/navigators/routes";
+import { Button } from "@components/Button/Button";
 
 const SettingsButton = () => {
     type SettingsNavigationProp = StackNavigationProp<RootStackParamList, Routes.settings>
@@ -17,16 +16,10 @@ const SettingsButton = () => {
         <Button
             onPress={handleButtonPress}
             icon='ios-person-circle'
-            type='transparent'
+            variant='transparent'
+            size='sm'
         />
     )
 }
-
-const styles = StyleSheet.create({
-    icon: {
-        fontSize: 24,
-        color: '#999'
-    }
-})
 
 export default SettingsButton;

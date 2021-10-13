@@ -3,12 +3,11 @@ import {
     createStackNavigator,
     StackNavigationOptions,
 } from '@react-navigation/stack';
-import {useSafeAreaInsets} from "react-native-safe-area-context";
-import {Routes} from "./routes";
-import {BottomNavigator} from "./BottomNavigator";
-import {RegattaItem} from "../../modules/regatta";
-import SettingsButton from "../../components/header/settingsButton";
-import Settings from "../../modules/settings";
+import {Routes} from "@core/navigators/routes";
+import {BottomNavigator} from "@core/navigators/BottomNavigator";
+import {RegattaItem} from "@modules/regatta";
+import SettingsButton from "@components/header/settingsButton";
+import Settings from "@modules/settings";
 
 const Stack = createStackNavigator();
 
