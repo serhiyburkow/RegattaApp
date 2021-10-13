@@ -4,7 +4,7 @@ import {IconWrapper, Title} from "../textComponents/TextComponents";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 interface Props {
-    icon?: keyof typeof Ionicons.glyphMap;
+    icon: keyof typeof Ionicons.glyphMap;
     title: string;
 }
 

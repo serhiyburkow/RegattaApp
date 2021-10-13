@@ -7,4 +7,5 @@ export type RootStackParamList = {
     [Routes.regattaList]: undefined;
     [Routes.regattaItem]: undefined;
     [Routes.settings]: undefined;
+    [Routes.about]: undefined;
 };
