@@ -4,5 +4,6 @@ export enum Routes {
     login = 'login',
     regattaList = 'regattaList',
     regattaItem = 'regattaItem',
-    settings = 'settings'
+    settings = 'settings',
+    about = 'about'
 }
