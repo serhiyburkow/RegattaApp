@@ -1,0 +1,177 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "eslint-plugin-import",
+    //    //        "plugin:import/errors",
+    //    "plugin:import/warnings",
+    //    "plugin:import/typescript"
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "__DEV__": "readonly"
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "no-empty-function": [
+      "warn", {
+        "allow": ["arrowFunctions", "methods"]
+      }
+    ],
+    "@typescript-eslint/no-empty-function": [
+      "warn", {
+        "allow": ["arrowFunctions", "methods"]
+      }
+    ],
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "tron"
+        ]
+      }
+    ],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "markers": [
+          "/"
+        ]
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    "no-unused-expressions": "off",
+    "no-unused-vars": "off",
+    // TypeScript
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-unused-expressions": "off", // need to research
+    // React
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "react/prop-types": "off",
+    // React Hooks
+    "react-hooks/rules-of-hooks": "error",
+    //    "react-hooks/exhaustive-deps": "warn",
+    "react/display-name": "off",
+    "no-extra-semi": "off",
+    "no-mixed-spaces-and-tabs": "off",
+    "no-case-declarations": "off",
+    "import/no-anonymous-default-export": "off",
+    "import/no-named-as-default": "off",
+    "no-undef": "error",
+    "no-duplicate-imports": "error",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "unknown",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@constants/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@components/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@assets/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@app/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "react"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "indent": [
+      "warn",
+      4
+    ]
+  },
+  "settings": {
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": [
+          "./src"
+        ]
+      },
+      "babel-module": {
+        "allowExistingDirectories": true
+      }
+    },
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": [
+          "^[@]"
+        ]
+      }
+    ]
+  }
+}
