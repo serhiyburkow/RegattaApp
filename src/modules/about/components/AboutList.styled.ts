@@ -3,7 +3,7 @@ import styled, {DefaultTheme} from 'styled-components/native';
 interface StyledAboutListItemWrapper {
     isFirstElement?: boolean;
     isLastElement?: boolean;
-    theme: DefaultTheme
+    theme: DefaultTheme;
 }
 
 export const StyledAboutListItemWrapper = styled.TouchableOpacity<StyledAboutListItemWrapper>((props: StyledAboutListItemWrapper) => ({

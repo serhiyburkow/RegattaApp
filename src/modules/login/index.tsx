@@ -3,7 +3,6 @@ import React, { useReducer, useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
     Keyboard,
-    Platform,
     View,
 } from 'react-native';
 
@@ -22,7 +21,6 @@ import {
 } from "@modules/login/components/containers.styled";
 import {FieldWrapper} from "@components/inputs/FieldWrapper";
 import {Logo} from "@modules/login/components/Logo";
-import {StyledKeyboardAvoidingView} from "@components/containers/Containers.styled";
 
 type Props = NativeStackScreenProps<RootStackParamList, Routes.settings>;
 
@@ -56,7 +54,6 @@ const Login = ({ navigation }: Props) => {
         (key: string) => errors[key],
     );
     return (
-        <StyledKeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <BasePage>
                 <Container>
                     <BackgroundContainer
@@ -119,7 +116,6 @@ const Login = ({ navigation }: Props) => {
                     <SocialLine />
                 </ContentContainer>
             </BasePage>
-        </StyledKeyboardAvoidingView>
     );
 };
 

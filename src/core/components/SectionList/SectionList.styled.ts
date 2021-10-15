@@ -14,8 +14,7 @@ export const StyledItemSeparator = styled.View((props: Props) => ({
 export const StyledSectionList = styled.SectionList((props: Props) => ({
     flex: 1,
     width: '100%',
-    marginTop: props.theme.sectionList.root.margin[0],
-    marginBottom: props.theme.sectionList.root.margin[1],
+    paddingBottom: props.theme.sectionList.root.margin[1],
 }))
 
 export const StyledSectionHeaderWrapper = styled.View((props: Props) => ({
@@ -24,6 +23,4 @@ export const StyledSectionHeaderWrapper = styled.View((props: Props) => ({
     backgroundColor: props.theme.sectionList.sectionHeader.backgroundColor,
     borderRadius: props.theme.sectionList.common.radius,
     width: '100%',
-    marginTop: props.theme.sectionList.root.margin[0],
-    marginBottom: props.theme.sectionList.root.margin[1],
 }))

@@ -10,6 +10,7 @@ import {
 import {StyledButton, Icon} from "./Button.styled";
 import {RegularText} from "@components/textComponents/TextComponents";
 import {Sizes} from "@constants/Typography";
+import {Colors} from "react-native/Libraries/NewAppScreen";
 
 export type ButtonVariant = 'primary' | 'secondary' | 'none' | 'disabled' | 'transparent';
 export type ButtonWidth = 'condensed' | 'normal' | 'large' | 'block';
@@ -46,6 +47,14 @@ export const Button = (props: ButtonProps) => {
         ...rest
     } = props;
 
+    const textColors = {
+        primary: 'monochrome100',
+        secondary: 'monochrome100',
+        disabled: 'monochrome30',
+        transparent: 'primary',
+        none: 'primary'
+    }
+
     return (
         <StyledButton
             variant={disabled ? 'disabled' : variant}
@@ -64,10 +73,11 @@ export const Button = (props: ButtonProps) => {
                         variant={disabled ? 'disabled' : variant}
                         size={22}
                         style={style.icon}
+                        fontColor={textColors[variant] as typeof Colors}
                     />
                 )}
                 {!!children && (
-                    <RegularText style={[{textAlign: 'center', color: '#fff'}, style.text]}>{children}</RegularText>
+                    <RegularText align='center' fontColor={textColors[variant] as typeof Colors} style={style.text}>{children}</RegularText>
                 )}
             </View>
         </StyledButton>

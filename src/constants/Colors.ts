@@ -1,10 +1,6 @@
 export type Colors = keyof typeof ColorsLight & keyof typeof ColorsDark & string;
 
-type ColorsType = {
-    [key: string]: string
-}
-
-export const ColorsLight: ColorsType = {
+export const ColorsLight = {
     primary: '#1b335f',
     secondary: '#7292a5',
     ternary: '#a7aeb9',
@@ -17,7 +13,7 @@ export const ColorsLight: ColorsType = {
     monochrome100: '#fff'
 }
 
-export const ColorsDark: ColorsType = {
+export const ColorsDark = {
     primary: '#1b335f',
     secondary: '#7292a5',
     ternary: '#a7aeb9',

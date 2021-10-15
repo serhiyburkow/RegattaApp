@@ -1,16 +1,10 @@
 import styled, {DefaultTheme} from "styled-components/native";
 import { indents } from "@constants/Typography";
-import {Dimensions} from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import {Colors} from "@constants/Colors";
 
-interface stylesMap {
-    [key: string]: any
-}
-
-const width = Dimensions.get('window').width;
-
-const buttonVariantStyles = (theme: DefaultTheme, variant: string ): stylesMap => {
-    const styles: stylesMap = {
+const buttonVariantStyles = (theme: DefaultTheme, variant: string ): Record<string, any> => {
+    const styles: Record<string, any> = {
         primary: {
             backgroundColor: theme.colors.primary
         },
@@ -26,8 +20,8 @@ const buttonVariantStyles = (theme: DefaultTheme, variant: string ): stylesMap =
     return styles[variant];
 }
 
-const sizeStyles = (theme: DefaultTheme, size = 'md'): stylesMap => {
-    const styles: stylesMap = {
+const sizeStyles = (theme: DefaultTheme, size = 'md'): Record<string, any> => {
+    const styles: Record<string, any> = {
         sm: {
             paddingVertical: indents.xs,
             paddingHorizontal: indents.sm
@@ -63,8 +57,8 @@ export const StyledButton = styled.Pressable((props: ButtonProps) => {
     }
 );
 
-const iconVariantStyles = (theme: DefaultTheme, variant = 'primary'): stylesMap => {
-    const styles: stylesMap = {
+const iconVariantStyles = (theme: DefaultTheme, variant = 'primary'): Record<string, any> => {
+    const styles: Record<string, any> = {
         primary: {
             color: theme.colors.monochrome100
         },
@@ -82,10 +76,16 @@ interface IconProps {
     theme: DefaultTheme;
     variant: string;
     size: string,
+    color: Colors,
     name: keyof typeof Ionicons.glyphMap;
 }
 
 export const Icon = styled(Ionicons).attrs<IconProps>((props: IconProps) => ({
     size: 22,
-    variant: props.variant
-})) ((props: IconProps) => iconVariantStyles(props.theme, props.variant))
+    variant: props.variant,
+})) ((props: IconProps) => {
+    return {
+        ...iconVariantStyles(props.theme, props.variant),
+        color: props.theme.colors[props.color]
+    }
+})

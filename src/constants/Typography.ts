@@ -11,7 +11,7 @@ export const fontSizes: Record<Sizes, number> = {
     max: 54,
 };
 
-export const lineHeights: { [index in Sizes]: string } = {
+export const lineHeights: Record<Sizes, string> = {
     xs: '12px',
     sm: '13px',
     md: '21px',
@@ -35,7 +35,7 @@ export const indents: Record<Sizes, number> = {
 
 export type FontType = 'regular' | 'bold' | 'italic';
 
-export const fontFamilies: { [index in FontType]: string } = {
+export const fontFamilies: Record<FontType, string> = {
     regular: 'RobotoCondensed_400Regular',
     bold: 'RobotoCondensed_700Bold',
     italic: 'RobotoCondensed_400Regular_Italic',

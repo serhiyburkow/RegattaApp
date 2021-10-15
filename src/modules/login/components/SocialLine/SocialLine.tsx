@@ -46,10 +46,4 @@ const SocialLine = (props: SocialLineProps) => {
     );
 };
 
-// const styles = StyleSheet.create({
-//     text: {
-//         fontSize: TextSize.sm,
-//     },
-// });
-
 export default withTheme(SocialLine);

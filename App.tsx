@@ -16,6 +16,8 @@ import { ThemeProvider } from 'styled-components/native';
 
 import { lightTheme } from '@config/theme';
 import { MainStackNavigator } from '@core/navigators/MainStackNavigator';
+import {Platform} from "react-native";
+import { StyledKeyboardAvoidingView } from '@app/core/components/containers/Containers.styled';
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -31,9 +33,11 @@ export default function App() {
     return (
         <NavigationContainer>
             <ThemeProvider theme={lightTheme}>
-                <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-                    <MainStackNavigator />
-                </SafeAreaProvider>
+                <StyledKeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+                    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+                        <MainStackNavigator />
+                    </SafeAreaProvider>
+                </StyledKeyboardAvoidingView>
             </ThemeProvider>
         </NavigationContainer>
     );

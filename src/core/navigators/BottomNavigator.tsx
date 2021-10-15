@@ -22,16 +22,28 @@ export const BottomNavigator = () => {
                 tabBarInactiveTintColor: 'gray',
             })}
         >
+            <Tab.Screen name={Routes.profile} component={Profile} options={{
+                headerRight: SettingsButton,
+                tabBarIcon: ({focused, color, size}) => (
+                    <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle-outline'} size={size}
+                              color={color}/>),
+            }}/>
             <Tab.Screen name={Routes.dashboard} component={Dashboard} options={{
                 headerRight: SettingsButton,
                 tabBarIcon: ({focused, color, size}) => (
-                    <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle'} size={size}
+                    <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle-outline'} size={size}
                               color={color}/>),
             }}/>
             <Tab.Screen name={Routes.regattaList} component={RegattaList} options={{
                 headerRight: SettingsButton,
                 tabBarIcon: ({focused, color, size}) => (
-                    <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle'} size={size}
+                    <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle-outline'} size={size}
+                              color={color}/>),
+            }}/>
+            <Tab.Screen name={Routes.about} component={About} options={{
+                headerRight: SettingsButton,
+                tabBarIcon: ({focused, color, size}) => (
+                    <Ionicons name={focused ? 'ios-information-circle' : 'ios-information-circle-outline'} size={size}
                               color={color}/>),
             }}/>
 

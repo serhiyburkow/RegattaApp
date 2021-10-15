@@ -1,15 +1,21 @@
 import * as React from 'react';
-import {AboutListItem} from "./AboutListItem";
+import {ProfileListItem} from "./ProfileListItem";
+import {ProfileListItemClear} from "./ProfileListItemClear";
 import {SectionListData, SectionListRenderItemInfo} from "react-native";
+import {ProfileData, ProfileDataItem} from "../../mock/profileData";
 import {StyledItemSeparator, StyledSectionList} from '@app/core/components/SectionList/SectionList.styled';
 import {SectionListSectionHeader} from "@components/SectionList/SectionListSectionHeader";
 
-interface AboutListProps {
-    data: Record<string, any>[];
+interface ProfileListProps {
+    data: ProfileData[];
+    inputHandler: (key: string) => (value: string) => void,
+    values: Record<string, any>
 }
 
-const AboutList = (props: AboutListProps) => {
-    const {data} = props;
+const ProfileList = (props: ProfileListProps) => {
+
+    const {data, inputHandler, values} = props;
+
     return (
         <StyledSectionList
             sections={data}
@@ -18,17 +24,20 @@ const AboutList = (props: AboutListProps) => {
             bounces={true}
             onEndReachedThreshold={0.5}
             keyExtractor={(el: { key: string }) => el.key}
-            renderItem={(props: SectionListRenderItemInfo<any>) => {
+            renderItem={(props: SectionListRenderItemInfo<ProfileDataItem>) => {
                 const isFirstElement = props.index === 0;
                 const isLastElement = props.index === props.section.data.length - 1;
 
-                return (
-                    <AboutListItem
-                        item={props.item}
-                        isFirstElement={isFirstElement}
-                        isLastElement={isLastElement}
-                    />
-                );
+                if (props.item.input.type === 'imagepicker') {
+                        return <ProfileListItemClear item={props.item} inputHandler={inputHandler} value={values[props.item.key]} />
+                }
+                return <ProfileListItem
+                    item={props.item}
+                    inputHandler={inputHandler}
+                    value={values[props.item.key]}
+                    isFirstElement={isFirstElement}
+                    isLastElement={isLastElement}
+                />
             }}
             renderSectionHeader={({ section }: {section: SectionListData<any>}) => {
                 const {hidden, title, icon} = section;
@@ -37,7 +46,7 @@ const AboutList = (props: AboutListProps) => {
                 ) : null;
             }}
         />
-    );
-};
+    )
+}
 
-export default AboutList;
+export default ProfileList;

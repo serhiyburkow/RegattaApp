@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyledAboutListItemWrapper } from './AboutList.styled';
-import {RegularText} from "../../../core/components/textComponents/TextComponents";
+import {RegularText} from "@components/textComponents/TextComponents";
 import {AboutDataItem} from "../constants/constants";
 
 interface Props {

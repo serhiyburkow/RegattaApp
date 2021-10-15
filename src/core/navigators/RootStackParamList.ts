@@ -8,4 +8,5 @@ export type RootStackParamList = {
     [Routes.regattaItem]: undefined;
     [Routes.settings]: undefined;
     [Routes.about]: undefined;
+    [Routes.profile]: undefined;
 };

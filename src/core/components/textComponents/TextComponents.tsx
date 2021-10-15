@@ -1,16 +1,12 @@
 import React from 'react';
 
 import {StyleProp, TextProps, ViewProps, ViewStyle} from "react-native";
-import {StyledCustomText, StyledIconWrapper } from './TextComponents.styled';
+import {StyledCustomText } from './TextComponents.styled';
 
 interface RegularTextProps
     extends TextProps,
         Partial<StyledCustomText> {
     children: string | string[];
-}
-interface IconWrapperProps extends ViewProps {
-    children: JSX.Element | JSX.Element[];
-    style?: StyleProp<ViewStyle>,
 }
 
 export const RegularText = (props: RegularTextProps) => {
@@ -19,6 +15,8 @@ export const RegularText = (props: RegularTextProps) => {
             fontColor='regular'
             fontType='regular'
             size='md'
+            align='left'
+            color='primary'
             {...props}
         />
     );
@@ -30,6 +28,7 @@ export const Title = (props: RegularTextProps) => {
             fontColor='regular'
             fontType='bold'
             size='lg'
+            align='left'
             {...props}
         />
     );
@@ -41,13 +40,8 @@ export const SubText = (props: RegularTextProps) => {
             fontColor='subtle'
             fontType='regular'
             size='sm'
+            align='left'
             {...props}
         />
     );
 };
-
-export const IconWrapper = (props: IconWrapperProps) => {
-    return (
-        <StyledIconWrapper {...props} />
-    )
-}

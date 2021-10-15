@@ -6,8 +6,8 @@ import {Animated, ScrollViewProps} from "react-native";
 interface BasePageProps extends ScrollViewProps {
     children: React.ReactNode | React.ReactNode[];
     padded?: boolean;
-    as?: any;
-    behavior?: any;
+    as?: React.ReactNode;
+    behavior?: string;
 }
 export const BasePage = (props: BasePageProps) => {
     const fadeAnim = React.useRef(new Animated.Value(0)).current;

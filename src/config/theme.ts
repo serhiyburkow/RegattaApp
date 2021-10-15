@@ -27,7 +27,7 @@ export const lightTheme: DefaultTheme = {
             radius: '5px',
         },
         root: {
-            margin: [indents.xl, indents.lg],
+            margin: [indents.md, indents.lg],
             backgroundColor: ColorsLight.monochrome70,
         },
         section: {

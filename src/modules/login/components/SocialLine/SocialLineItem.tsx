@@ -2,7 +2,7 @@ import React from 'react';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { Button } from '@app/core/components/Button/Button';
+import { Button } from '@components/Button/Button';
 import {Colors} from "@constants/Colors";
 import {DefaultTheme, withTheme} from "styled-components/native";
 import { SocialButton } from './SocialButton.styled';

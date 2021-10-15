@@ -1,6 +1,6 @@
 import React from "react";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import {Button} from "@components/Button/Button";
+import { Button } from "@components/Button/Button";
 import {RootStackParamList} from "@core/navigators/RootStackParamList";
 import {Routes} from "@core/navigators/routes";
 import {BasePage} from "@components/containers/BaseScreen";
