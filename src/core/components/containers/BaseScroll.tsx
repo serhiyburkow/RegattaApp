@@ -1,20 +1,18 @@
-import { useFocusEffect } from '@react-navigation/native';
 import React from 'react';
-import * as ReactNative from 'react-native';
+import {StyledBaseScroll} from "@components/containers/Containers.styled";
+import {ScrollViewProps} from "react-native";
 
-import * as S from './Containers.styled';
-
-interface BaseScrollProps extends ReactNative.ScrollViewProps {
+interface BaseScrollProps extends ScrollViewProps {
     children: React.ReactNode | React.ReactNode[];
 }
 export const BaseScroll = (props: BaseScrollProps) => {
     return (
-        <S.StyledBaseScroll
+        <StyledBaseScroll
             showsVerticalScrollIndicator={false}
             alwaysBounceVertical={false}
             contentContainerStyle={{ padding: 16 }}
             {...props}>
             {props.children}
-        </S.StyledBaseScroll>
+        </StyledBaseScroll>
     );
 };

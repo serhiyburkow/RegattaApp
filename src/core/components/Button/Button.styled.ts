@@ -1,5 +1,5 @@
-import styled, {css, DefaultTheme} from "styled-components/native";
-import { indents } from "../../../constants/Typography";
+import styled, {DefaultTheme} from "styled-components/native";
+import { indents } from "@constants/Typography";
 import {Dimensions} from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -9,63 +9,83 @@ interface stylesMap {
 
 const width = Dimensions.get('window').width;
 
-const buttonVariantStyles = (theme: DefaultTheme, variant = 'primary'): any => {
-
+const buttonVariantStyles = (theme: DefaultTheme, variant: string ): stylesMap => {
     const styles: stylesMap = {
-        primary: css`
-            background-color: ${theme.colors.primary}
-        `,
-        transparent: css`
-            background-color: transparent
-            padding: ${indents.sm};
-        `,
-        disabled: css`
-            background-color: transparent
-        `
+        primary: {
+            backgroundColor: theme.colors.primary
+        },
+        transparent: {
+            backgroundColor: 'transparent',
+            paddingVertical: indents.sm,
+            paddingHorizontal: indents.sm
+        },
+        disabled: {
+            backgroundColor: theme.colors.monochrome50
+        }
     };
     return styles[variant];
 }
 
-const sizeStyles = (theme: DefaultTheme, size = 'md'): any => {
+const sizeStyles = (theme: DefaultTheme, size = 'md'): stylesMap => {
     const styles: stylesMap = {
-        sm: css`
-            padding: ${indents.xs} ${indents.sm};
-        `,
-        md: css`
-            padding: ${indents.sm} ${indents.md};
-        `,
-        lg: css`
-            padding: ${indents.md} ${indents.lg};
-        `,
-        xl: css`
-            padding: ${indents.lg} ${indents.xl};
-        `,
+        sm: {
+            paddingVertical: indents.xs,
+            paddingHorizontal: indents.sm
+        },
+        md: {
+            paddingVertical: indents.sm,
+            paddingHorizontal: indents.md
+        },
+        lg: {
+            paddingVertical: indents.md,
+            paddingHorizontal: indents.lg
+        },
+        xl: {
+            paddingVertical: indents.lg,
+            paddingHorizontal: indents.xl
+        },
     }
     return styles[size];
 }
 
-export const StyledButton = styled.Pressable`
-    ${({ theme, size }) => sizeStyles(theme, size)}
-    ${({ theme, variant }) => buttonVariantStyles(theme, variant)}
-    border-radius: ${({ rounded }) => rounded ? 100 : 0}rem;
-`;
+interface ButtonProps {
+    theme: DefaultTheme,
+    size: string,
+    variant: string,
+    rounded: boolean
+}
+export const StyledButton = styled.Pressable((props: ButtonProps) => {
+        return {
+            ...sizeStyles(props.theme, props.size),
+            ...buttonVariantStyles(props.theme, props.variant),
+            borderRadius: props.rounded ? 100 : 0,
+        }
+    }
+);
 
-const iconVariantStyles = (theme: DefaultTheme, variant = 'primary'): any => {
+const iconVariantStyles = (theme: DefaultTheme, variant = 'primary'): stylesMap => {
     const styles: stylesMap = {
-        primary: css`
-            color: ${theme.colors.monochrome100}
-        `,
-        transparent: css`
-            color: ${theme.colors.primary}
-        `,
-        disabled: css`
-            color: ${theme.colors.monochrome50}
-        `
+        primary: {
+            color: theme.colors.monochrome100
+        },
+        transparent: {
+            color: theme.colors.primary
+        },
+        disabled: {
+            color: theme.colors.monochrome70
+        }
     };
     return styles[variant];
 }
 
-export const StyledIcon = styled(Ionicons)`
-    ${({ theme, variant }) => iconVariantStyles(theme, variant)}
-    font-size: 22px;
-`
+interface IconProps {
+    theme: DefaultTheme;
+    variant: string;
+    size: string,
+    name: keyof typeof Ionicons.glyphMap;
+}
+
+export const Icon = styled(Ionicons).attrs<IconProps>((props: IconProps) => ({
+    size: 22,
+    variant: props.variant
+})) ((props: IconProps) => iconVariantStyles(props.theme, props.variant))

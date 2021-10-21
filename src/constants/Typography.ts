@@ -1,14 +1,14 @@
 export type Sizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'super' | 'max';
 
-export const fontSizes: { [index in Sizes]: string } = {
-    xs: '10px',
-    sm: '12px',
-    md: '14px',
-    lg: '16px',
-    xl: '18px',
-    xxl: '24px',
-    super: '32px',
-    max: '54px',
+export const fontSizes: Record<Sizes, number> = {
+    xs: 10,
+    sm: 12,
+    md: 14,
+    lg: 16,
+    xl: 18,
+    xxl: 24,
+    super: 32,
+    max: 54,
 };
 
 export const lineHeights: { [index in Sizes]: string } = {
@@ -22,16 +22,15 @@ export const lineHeights: { [index in Sizes]: string } = {
     max: '81px',
 };
 
-// It's an alias to lineHeights to ma
-export const indents: { [index in Sizes]: string} = {
-    xs: '5px',
-    sm: '10px',
-    md: '20px',
-    lg: '30px',
-    xl: '40px',
-    xxl: '50px',
-    super: '60px',
-    max: '70px',
+export const indents: Record<Sizes, number> = {
+    xs: 5,
+    sm: 10,
+    md: 20,
+    lg: 30,
+    xl: 40,
+    xxl: 50,
+    super: 60,
+    max: 70,
 }
 
 export type FontType = 'regular' | 'bold' | 'italic';

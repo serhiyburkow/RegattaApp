@@ -50,5 +50,13 @@ declare module 'styled-components' {
                 radius: string;
             };
         };
+        socialLogin: {
+            colors: {
+                socialFb: Colors;
+                socialIn: Colors;
+                socialInsta: Colors;
+                socialGoogle: Colors;
+            }
+        }
     }
 }

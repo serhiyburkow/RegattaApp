@@ -8,6 +8,7 @@ import {BottomNavigator} from "@core/navigators/BottomNavigator";
 import {RegattaItem} from "@modules/regatta";
 import SettingsButton from "@components/header/settingsButton";
 import Settings from "@modules/settings";
+import Login from "@modules/login";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ export const MainStackNavigator = () => {
             <Stack.Screen name={Routes.mainStack} component={BottomNavigator} options={{headerShown: false}} />
             <Stack.Screen name={Routes.regattaItem} component={RegattaItem} options={{headerRight: SettingsButton}} />
             <Stack.Screen name={Routes.settings} component={Settings} options={{headerRight: SettingsButton}} />
+            <Stack.Screen name={Routes.login} component={Login} options={{headerShown: false}} />
         </Stack.Navigator>
     );
 }

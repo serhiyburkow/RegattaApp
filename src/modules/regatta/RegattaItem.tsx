@@ -1,22 +1,19 @@
-import {Text, View} from "react-native";
 import React from "react";
-import {layout} from "../../styles/layout";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import Button from "../../components/Button";
-import {RootStackParamList} from "../../core/navigators/RootStackParamList";
-import {Routes} from "../../core/navigators/routes";
+import {BasePage} from "@components/containers/BaseScreen";
+import {Routes} from "@core/navigators/routes";
+import {RootStackParamList} from "@core/navigators/RootStackParamList";
+import { Button } from "@components/Button/Button";
+import {RegularText} from "@components/textComponents/TextComponents";
 
 type Props = NativeStackScreenProps<RootStackParamList, Routes.regattaItem>
 
 const RegattaItem = ({navigation}: Props) => {
     return (
-        <View style={layout.container}>
-            <Text>Regatta Item!</Text>
-
-            <View>
-                <Button onPress={() => navigation.navigate(Routes.mainStack)} text="Dashboard"/>
-            </View>
-        </View>
+        <BasePage>
+            <RegularText>Dash!</RegularText>
+            <Button onPress={() => navigation.navigate(Routes.mainStack)}>Dashboard</Button>
+        </BasePage>
     );
 }
 

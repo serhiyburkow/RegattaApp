@@ -2,14 +2,12 @@ import React from 'react';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {
-    Dimensions,
     StyleProp,
     TextStyle,
     View,
     ViewStyle,
 } from 'react-native';
-import * as S from './Button.styled';
-import {StyledIcon} from "./Button.styled";
+import {StyledButton, Icon} from "./Button.styled";
 import {RegularText} from "@components/textComponents/TextComponents";
 import {Sizes} from "@constants/Typography";
 
@@ -45,30 +43,33 @@ export const Button = (props: ButtonProps) => {
         rounded = true,
         icon = '',
         style = {},
+        ...rest
     } = props;
 
     return (
-        <S.StyledButton
-            {...{
-                variant: disabled ? 'disabled' : variant,
-                rounded,
-                size,
-                onPress,
-                width,
-                ...props
-            }}
+        <StyledButton
+            variant={disabled ? 'disabled' : variant}
+            disabled={disabled}
+            rounded={rounded}
+            size={size}
+            onPress={onPress}
+            // width={width}
+            style={style.root}
+            {...rest}
         >
             <View>
                 {!!icon && (
-                    <StyledIcon
+                    <Icon
                         name={icon}
                         variant={disabled ? 'disabled' : variant}
+                        size={22}
+                        style={style.icon}
                     />
                 )}
                 {!!children && (
-                    <RegularText>{children}</RegularText>
+                    <RegularText style={[{textAlign: 'center', color: '#fff'}, style.text]}>{children}</RegularText>
                 )}
             </View>
-        </S.StyledButton>
+        </StyledButton>
     )
 }

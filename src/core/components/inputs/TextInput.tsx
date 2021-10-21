@@ -13,7 +13,6 @@ import {RegularText} from "@components/textComponents/TextComponents";
 type TextInputProps = React.ComponentProps<typeof RNTextInput> & {
     value: string,
     required?: boolean,
-    isEditable?: boolean,
     errorHandler?: (arg0: boolean) => void,
     label?: string,
     onChange: (value: string) => void,
@@ -31,7 +30,6 @@ const TextInput: React.FC<TextInputProps> = (props) => {
     const {
         required = false,
         value,
-        isEditable = true,
         errorHandler,
         isPassword,
         validation,
@@ -43,7 +41,6 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 
     const [internalValue, setInternalValue] = useState(value)
     const [error, setError] = useState('')
-    const [editable, setEditable] = useState(isEditable)
     const [isFocused, setFocus] = useState(false)
     const [secureText, setSecureText] = useState(isPassword);
 
@@ -52,14 +49,6 @@ const TextInput: React.FC<TextInputProps> = (props) => {
             errorHandler && errorHandler(true)
         }
     }, [])
-
-    useEffect(() => {
-        setInternalValue(value);
-    }, [value]);
-
-    useEffect(() => {
-        setEditable(isEditable);
-    }, [isEditable]);
 
     const handlePasswordVisibilityChange = () => {
         setSecureText(!secureText)
@@ -99,7 +88,6 @@ const TextInput: React.FC<TextInputProps> = (props) => {
                 <StyledTextInput
                     value={internalValue}
                     onChangeText={handleChangeText}
-                    editable={editable}
                     secureTextEntry={secureText}
                     onFocus={handleFocus}
                     onBlur={handleBlur}

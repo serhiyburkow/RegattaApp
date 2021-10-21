@@ -53,6 +53,14 @@ export const lightTheme: DefaultTheme = {
             radius: '5px',
         },
     },
+    socialLogin: {
+        colors: {
+            socialFb: '#3b5998',
+            socialIn: '#0072b1',
+            socialInsta: '#C13584',
+            socialGoogle: '#db3236',
+        }
+    }
 };
 // TODO: ###CF### In a future we will separate them
 export const darkTheme = lightTheme;

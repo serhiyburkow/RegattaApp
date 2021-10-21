@@ -1,36 +1,37 @@
-import styled from 'styled-components/native';
+import styled, { DefaultTheme } from 'styled-components/native';
 
-export const StyledTextInput = styled.TextInput`
-    background-color: #ffffff;
-    padding: 10px 20px;
-    width: 100%;
-    border-color: #ddd;
-    border-width: 1px;
-    border-radius: 20px;
-    color: #999;
-`;
+interface Props {
+    theme: DefaultTheme
+}
 
-export const StyledInputRowWrapper = styled.View`
-    min-height: 50px;
-    flex: 1;
-    justify-content: flex-start;
-    align-items: center;
-    margin-left: 10px;
-    width: 100%;
-`;
+export const StyledTextInput = styled.TextInput((props: Props) => ({
+    backgroundColor: props.theme.colors.monochrome100,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    minHeight: 42,
+    borderColor: props.theme.colors.monochrome50,
+    borderWidth: 1,
+    borderRadius: 20,
+    color: props.theme.colors.secondary
+}))
 
-export const StyledInputWrapper = styled.View`
-    width: 100%;
-`;
+export const StyledInputRowWrapper = styled.View(() => ({
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: '100%'
+}))
 
-export const StyledEyeBtn = styled.TouchableOpacity`
-    z-index: 10,
+export const StyledInputWrapper = styled.View(() => ({
+    width: '100%'
+}))
+
+export const StyledEyeBtn = styled.TouchableOpacity(() => ({
+    zIndex: 10,
     position: 'absolute',
-    right: 5,
     top: 0,
+    right: 5,
+    bottom: 0,
     width: 20,
-    justify-content: 'center',
-    height: 50px,
-`;
-
-
+    justifyContent: 'center',
+}))

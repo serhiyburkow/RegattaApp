@@ -8,6 +8,8 @@ import Dashboard from "@modules/dashboard";
 import {Ionicons} from "@expo/vector-icons";
 import {RegattaList} from "@modules/regatta";
 import SettingsButton from "@components/header/settingsButton";
+import Profile from "@modules/profile";
+import About from "@modules/about";
 
 export const BottomNavigator = () => {
 

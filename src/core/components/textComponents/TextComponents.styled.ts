@@ -1,25 +1,23 @@
-import {fontFamilies, Sizes, fontSizes, FontType, lineHeights} from "../../../constants/Typography";
-import {FontColor} from "../../../config/theme";
-import styled from "styled-components/native";
+import {fontFamilies, Sizes, fontSizes, FontType, lineHeights} from "@constants/Typography";
+import styled, {DefaultTheme} from "styled-components/native";
+import {Colors} from "@constants/Colors";
 
 export interface StyledCustomText {
+    theme: DefaultTheme,
     size: Sizes;
     fontType: FontType;
-    fontColor: FontColor;
+    fontColor: Colors;
 }
 
-type FontSizesType = keyof typeof fontSizes;
-type FontFamiliesType = keyof typeof fontFamilies;
+export const StyledCustomText = styled.Text((props: StyledCustomText) => ({
+    color: props.theme.general.textColor, // change to fontColor
+    fontSize: fontSizes[props.size],
+    lineHeight: lineHeights[props.size],
+    fontFamily: fontFamilies[props.fontType]
+}));
 
-export const StyledCustomText = styled.Text<StyledCustomText>`
-    color: ${(props: { size: FontSizesType }) =>  fontSizes[props.size]};
-    font-size: ${(props: { size: FontSizesType }) => fontSizes[props.size]};
-    line-height: ${(props: { size: FontSizesType }) => lineHeights[props.size]};
-    font-family: ${(props: {fontType: FontFamiliesType}) => fontFamilies[props.fontType]};
-`;
-
-export const StyledIconWrapper = styled.View`
-  padding: ${({ theme }: any) => theme.icon.wrapper.padding};
-  border-radius: ${({ theme }: any) => theme.icon.wrapper.radius};
-  background-color: ${({ theme }: any) => theme.colors.secondary};
-`;
+export const StyledIconWrapper = styled.View<StyledCustomText>((props: StyledCustomText) => ({
+    padding: props.theme.icon.wrapper.padding,
+    borderRadius: props.theme.icon.wrapper.radius,
+    backgroundColor: props.theme.colors.secondary
+}))
