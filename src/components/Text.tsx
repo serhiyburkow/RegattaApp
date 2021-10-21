@@ -1,23 +1,29 @@
-import {StyleSheet, Text as SystemText} from "react-native";
-import React from "react";
+import React from 'react';
+
+import {
+    StyleProp,
+    StyleSheet,
+    Text as SystemText,
+    TextStyle,
+} from 'react-native';
 
 interface TextProps {
-    styles?: Record<string, any>,
-    children: string
+    styles?: StyleProp<TextStyle>;
+    children: string;
 }
 
 const Text = (props: TextProps) => {
-    const {styles, children} = props;
+    const { styles, children } = props;
 
     return (
-        <SystemText style={[defaultStyles.text, styles?.text]}>{children}</SystemText>
-    )
-}
+        <SystemText style={[defaultStyles.text, styles]}>{children}</SystemText>
+    );
+};
 
 export const defaultStyles = StyleSheet.create({
     text: {
-        fontSize: 14
+        fontSize: 14,
     },
-})
+});
 
 export default Text;
