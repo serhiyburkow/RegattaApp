@@ -8,9 +8,12 @@ module.exports = function (api) {
                 {
                     alias: {
                         '@app': './src',
-                        '@components': './src/components',
+                        '@components': './src/core/components',
                         '@constants': './src/constants',
                         '@assets': './assets',
+                        '@modules': './src/modules',
+                        '@core': './src/core',
+                        '@config': './src/config',
                     },
                 },
             ],

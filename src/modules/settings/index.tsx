@@ -1,19 +1,19 @@
-import {Text, View} from "react-native";
 import React from "react";
-import {layout} from "../../styles/layout";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
-import {RootStackParamList} from "../../navigation/RootStackParamList";
-import {Routes} from "../../constants";
-import Button from "../../components/Button";
+import { Button } from "@components/Button/Button";
+import {RootStackParamList} from "@core/navigators/RootStackParamList";
+import {Routes} from "@core/navigators/routes";
+import {BasePage} from "@components/containers/BaseScreen";
+import {RegularText} from "@components/textComponents/TextComponents";
 
 type Props = NativeStackScreenProps<RootStackParamList, Routes.settings>
 
 const Settings = ({navigation}: Props) => {
     return (
-        <View style={layout.container}>
-            <Text>Dash!</Text>
+        <BasePage>
+            <RegularText>Settings!</RegularText>
             <Button onPress={() => navigation.navigate(Routes.login)}>Login</Button>
-        </View>
+        </BasePage>
     );
 }
 
